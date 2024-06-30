@@ -7,7 +7,7 @@ export default {
     success: "#449666",
     white: "#FFFFFF",
     background: "#FFFFFF",
-    backgroundDark: "#272627",
+    backgroundDark: "#171617",
     black: "#010104",
     gray: "#6E6C6F",
     lightGray: "#ECE8ED",
