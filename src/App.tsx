@@ -114,12 +114,3 @@ const AppNameInput = styled.input`
 const HiddenInput = styled.input`
   display: none;
 `;
-
-const TitleSubtitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  padding-bottom: 0;
-`;
