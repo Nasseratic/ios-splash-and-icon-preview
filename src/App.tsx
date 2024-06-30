@@ -62,6 +62,7 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  background-color: ${(props) => props.theme.colors.backgroundDark};
 `;
 
 const SelectAndInputContainer = styled.div`
@@ -70,6 +71,7 @@ const SelectAndInputContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding-top: 24px;
 `;
 
 const SelectImageButton = styled.button`
