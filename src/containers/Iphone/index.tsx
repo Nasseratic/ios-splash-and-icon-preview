@@ -215,6 +215,7 @@ const AppIconName = styled.div`
   font-family: ${(props) => props.theme.fonts.ultralight};
   margin-top: 10px;
   letter-spacing: 1px;
+  color: #fff;
 `;
 
 const IphoneBottomBar = styled.div`
