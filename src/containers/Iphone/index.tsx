@@ -82,7 +82,7 @@ export default function Iphone({
           <AppIconsContainer>
             {defaultApps.map((app) => (
               <AppIcon>
-                <AppIconImage src={app.icon} />
+                {app.icon.startsWith("http") && <AppIconImage src={app.icon} />}
                 <AppIconName>
                   {app.name?.replace(/(.{30})..+/, "$1...")}
                 </AppIconName>
