@@ -89,7 +89,7 @@ export default function Iphone({
                 )}
 
                 <AppIconName>
-                  {app.name?.replace(/(.{7})..+/, "$1...")}
+                  {app.name?.replace(/(.{30})..+/, "$1...")}
                 </AppIconName>
               </AppIcon>
             ))}
@@ -132,7 +132,6 @@ const IphoneWallpaper = styled.div`
   max-width: 380px;
   height: 100%;
   object-fit: cover;
-  filter: blur(2px);
 `;
 
 const IphoneWallpaperImage = styled.img`
