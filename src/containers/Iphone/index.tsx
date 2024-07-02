@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import IphoneFrame from "@/assets/img/iphone_frame.png";
 import { FaBatteryHalf, FaWifi, FaSignal } from "react-icons/fa";
-import { useRef, useState } from "react";
 
 interface IphoneInterfaceProps {
   appName?: string | null;
@@ -294,8 +293,4 @@ const IphoneBottomBar = styled.div`
     width: 45px;
     height: 45px;
   }
-`;
-
-const HiddenInput = styled.input`
-  display: none;
 `;
