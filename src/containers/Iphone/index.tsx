@@ -82,12 +82,7 @@ export default function Iphone({
           <AppIconsContainer>
             {defaultApps.map((app) => (
               <AppIcon>
-                {app.name === appName ? (
-                  <SpecialAppIconImage src={app.icon} />
-                ) : (
-                  <AppIconImage src={app.icon} />
-                )}
-
+                <AppIconImage src={app.icon} />
                 <AppIconName>
                   {app.name?.replace(/(.{30})..+/, "$1...")}
                 </AppIconName>
@@ -209,57 +204,6 @@ const AppIconImage = styled.img`
   image-rendering: crisp-edges;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function hex2rgba(hex: any, alpha = 1) {
-  const [r, g, b] = hex.match(/\w\w/g).map((x: string) => parseInt(x, 16));
-  return `rgba(${r},${g},${b},${alpha})`;
-}
-
-const SpecialAppIconImage = styled.img`
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 10px;
-  image-rendering: crisp-edges;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  animation-name: pulse;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-
-  @keyframes pulse {
-    0% {
-      transform: rotate(0deg);
-      box-shadow: 0 0 10px 1px
-        ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
-    }
-    25% {
-      transform: rotate(3deg);
-      box-shadow: 0 0 10px 5px
-        ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
-    }
-    50% {
-      transform: rotate(-3deg);
-      box-shadow: 0 0 10px 5px
-        ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
-    }
-    75% {
-      transform: rotate(3deg);
-      box-shadow: 0 0 10px 1px
-        ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
-    }
-    100% {
-      transform: rotate(0deg);
-      box-shadow: 0 0 10px 1px
-        ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
-    }
-  }
 
   &:hover {
     opacity: 0.5;
