@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <Container>
-      {!urlConfig.iconUrl && (
+      {!urlConfig.iconUrl && !urlConfig.splashUrl && (
         <SelectAndInputContainer>
           <SelectImageButton onClick={handleClickToUpload}>
             {t("selectTheIcon")}
