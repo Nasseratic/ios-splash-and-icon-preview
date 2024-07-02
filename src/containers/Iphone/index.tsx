@@ -16,7 +16,7 @@ export default function Iphone({
   const defaultApps = [
     {
       name: "WhatsApp",
-      icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f0/cd/f8/f0cdf8f0-74b2-8fe4-b33b-69947f3ff6b1/AppIconCatalystRelease-0-2x_U007euniversal-0-0-0-4-0-0-0-85-220-0.png/230x0w.webp",
+      icon: "https://i.pinimg.com/736x/e6/85/55/e685555d3879dd2407d668086ee7208a.jpg",
     },
     {
       name: "Instagram",
