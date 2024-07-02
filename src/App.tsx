@@ -6,8 +6,9 @@ import { useTranslation } from "react-i18next";
 
 const query = new URLSearchParams(window.location.search);
 const urlConfig = {
-  appName: query.get("appName") || "",
-  iconUrl: query.get("iconUrl") || "",
+  appName: query.get("appName"),
+  iconUrl: query.get("iconUrl"),
+  splashUrl: query.get("splashUrl"),
 };
 
 export default function App() {
@@ -50,7 +51,11 @@ export default function App() {
           />
         </SelectAndInputContainer>
       )}
-      <Iphone appName={appName} selectedIcon={selectedIcon} />
+      <Iphone
+        appName={appName}
+        selectedIcon={selectedIcon}
+        splashUrl={urlConfig.splashUrl}
+      />
     </Container>
   );
 }

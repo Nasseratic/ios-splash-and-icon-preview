@@ -4,18 +4,16 @@ import { FaBatteryHalf, FaWifi, FaSignal } from "react-icons/fa";
 import { useRef, useState } from "react";
 
 interface IphoneInterfaceProps {
-  appName: string;
-  selectedIcon?: string;
+  appName?: string | null;
+  splashUrl?: string | null;
+  selectedIcon?: string | null;
 }
 
 export default function Iphone({
   appName,
   selectedIcon,
+  splashUrl,
 }: IphoneInterfaceProps) {
-  const [selectedWallpaper, setSelectedWallpaper] = useState("");
-
-  const wallpaperRef = useRef<HTMLInputElement>(null);
-
   const defaultApps = [
     {
       name: "WhatsApp",
@@ -51,10 +49,6 @@ export default function Iphone({
         selectedIcon ||
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/White_square_50%25_transparency.svg/768px-White_square_50%25_transparency.svg.png",
     },
-    {
-      name: "Wallpaper",
-      icon: "https://icon-library.com/images/iphone-settings-icon/iphone-settings-icon-17.jpg",
-    },
   ];
 
   function getCurrentTime() {
@@ -65,70 +59,50 @@ export default function Iphone({
     return `${hours}:${minutes}`;
   }
 
-  function onClickWallpaper() {
-    if (wallpaperRef.current) {
-      wallpaperRef.current.click();
-    }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onChangeWallpaper(e: any) {
-    const file = e.target.files[0];
-    const data = URL.createObjectURL(file);
-    setSelectedWallpaper(data);
-  }
-
   return (
     <IphoneFrameContainer>
-      <HiddenInput
-        type="file"
-        accept="image/*"
-        ref={wallpaperRef}
-        onChange={onChangeWallpaper}
-      />
       <IphoneWallpaper>
         <IphoneWallpaperImage
           src={
-            selectedWallpaper ||
-            "https://cdn.osxdaily.com/wp-content/uploads/2022/06/ios-16-default-wallpaper-light.jpg"
+            splashUrl ||
+            "https://techandall.com/wp-content/uploads/2021/07/ios-15-iPhone-wallpaper-from-ispazio-dark.png"
           }
         />
       </IphoneWallpaper>
       <IphoneFrameImage src={IphoneFrame} />
-      <IphoneInterface>
-        <IphoneTopBar>
-          <Time>{getCurrentTime()}</Time>
-          <IconsContainer>
-            <FaSignal />
-            <FaWifi />
-            <FaBatteryHalf />
-          </IconsContainer>
-        </IphoneTopBar>
-        <AppIconsContainer>
-          {defaultApps.map((app) => (
-            <AppIcon>
-              {app.name === "Wallpaper" ? (
-                <SpecialAppIconImage
-                  onClick={onClickWallpaper}
-                  src={app.icon}
-                />
-              ) : (
-                <AppIconImage src={app.icon} />
-              )}
+      {!splashUrl && (
+        <IphoneInterface>
+          <IphoneTopBar>
+            <Time>{getCurrentTime()}</Time>
+            <IconsContainer>
+              <FaSignal />
+              <FaWifi />
+              <FaBatteryHalf />
+            </IconsContainer>
+          </IphoneTopBar>
+          <AppIconsContainer>
+            {defaultApps.map((app) => (
+              <AppIcon>
+                {app.name === appName ? (
+                  <SpecialAppIconImage src={app.icon} />
+                ) : (
+                  <AppIconImage src={app.icon} />
+                )}
 
-              <AppIconName>
-                {app.name.replace(/(.{7})..+/, "$1...")}
-              </AppIconName>
-            </AppIcon>
-          ))}
-        </AppIconsContainer>
-        <IphoneBottomBar>
-          <AppIconImage src="https://www.ggplaw.co.uk/wp-content/uploads/2020/03/iphone-phone-logo.png" />
-          <AppIconImage src="https://i.imgur.com/gEDvfce.png" />
-          <AppIconImage src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IMessage_logo.svg/1200px-IMessage_logo.svg.png" />
-          <AppIconImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0w5GvI3wmp6uKM3pnzP6FHsrHEsynFAx5Xg&usqp=CAU" />
-        </IphoneBottomBar>
-      </IphoneInterface>
+                <AppIconName>
+                  {app.name?.replace(/(.{7})..+/, "$1...")}
+                </AppIconName>
+              </AppIcon>
+            ))}
+          </AppIconsContainer>
+          <IphoneBottomBar>
+            <AppIconImage src="https://www.ggplaw.co.uk/wp-content/uploads/2020/03/iphone-phone-logo.png" />
+            <AppIconImage src="https://i.imgur.com/gEDvfce.png" />
+            <AppIconImage src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IMessage_logo.svg/1200px-IMessage_logo.svg.png" />
+            <AppIconImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0w5GvI3wmp6uKM3pnzP6FHsrHEsynFAx5Xg&usqp=CAU" />
+          </IphoneBottomBar>
+        </IphoneInterface>
+      )}
     </IphoneFrameContainer>
   );
 }
@@ -268,17 +242,17 @@ const SpecialAppIconImage = styled.img`
         ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
     }
     25% {
-      transform: rotate(5deg);
+      transform: rotate(3deg);
       box-shadow: 0 0 10px 5px
         ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
     }
     50% {
-      transform: rotate(-5deg);
+      transform: rotate(-3deg);
       box-shadow: 0 0 10px 5px
         ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
     }
     75% {
-      transform: rotate(5deg);
+      transform: rotate(3deg);
       box-shadow: 0 0 10px 1px
         ${(props) => hex2rgba(props.theme.colors.white, 0.2)};
     }
